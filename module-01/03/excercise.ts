@@ -4,6 +4,21 @@ for (let i = 1; i <= 10; i++) {
   console.log(`${_number1} x ${i}`);
 }
 
+function multiplicationTable(number: number) {
+  for (let i = 1; i <= 10; i++) {
+    console.log(`${number} x ${i}`);
+  }
+}
+
+const funcExpress = function () {
+  return;
+};
+
+const arrowFunc = () => {};
+
+console.log(multiplicationTable(5));
+console.log(multiplicationTable(9));
+
 // soal no 2
 // build in method
 let _string1: string = "kasur ini rusaks";
