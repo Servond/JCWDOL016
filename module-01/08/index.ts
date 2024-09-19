@@ -179,3 +179,27 @@ map.forEach((i) => {
 for (let data of map) {
   console.log(data);
 }
+
+const arr = [5, 2, 4];
+console.log(arr);
+
+// Linked List
+
+const linkListSingle = {
+  head: {
+    value: "a",
+    next: {
+      value: "b",
+      next: {
+        value: "c",
+        next: {
+          value: "d",
+          next: {
+            value: "e",
+            next: null,
+          },
+        },
+      },
+    },
+  },
+};

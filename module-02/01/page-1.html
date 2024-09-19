@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="" />
+    <title>Document</title>
+    <style>
+        /* selector tag */
+        h3 {
+            color: cyan
+        }
+
+        p {
+            color: red;
+            font-size: 2em;
+            line-height: 2em;
+        }
+
+        /* selector class */
+        .title-internal {
+            color:bisque;
+        }
+
+        /* selector id */
+        #subtitle-internal {
+            color:cornflowerblue
+        }
+    </style>
+</head>
+<body>
+    <div style="font-size: 20px;">
+        <h1>Ini Page 1</h1>
+
+        <!-- Inline Style CSS -->
+        <!-- Content Section -->
+        <div style="color:blueviolet">
+            <p style="color:blue">
+                Lorem ipsum dolor sit amet, consectetur 
+                adipiscing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. 
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+                mollit anim id est laborum.
+            </p>
+            <p style="font-family:'Times New Roman', Times, serif;">
+                Test
+            </p>
+        </div>
+
+        <!-- Internal Style CSS -->
+        <div style="height:200px">
+            <h3 class="title-internal">Ini Internal</h3>
+            <h3 id="subtitle-internal">Ini Berubah Juga</h3>
+        </div>
+
+        <!-- External Style CSS -->
+        <div>
+            <h4 style="height: 2em;margin-bottom: 5em;border: 1px solid black;padding:1em;padding-bottom:2em;width:50%">Ini External</h4>
+            <h5>Ini konten 2</h5>
+        </div>
+    </div>
+</body>
+</html>
