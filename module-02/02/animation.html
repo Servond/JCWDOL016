@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #kotak1 {
+            background-color: yellow;
+            width: 20em;
+            height: 20em;
+            position: relative;
+            animation-name: animasi;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            /* transform: translate(10em, 10em) rotate(60deg) skew(30deg); */
+        }
+
+        @keyframes animasi {
+            0%  {background-color: yellow; left: 0; top: 0}
+            25% {background-color: red; left: 20em; top: 0;transform: rotate(90deg);}
+            50% {background-color: green; left: 20em; top: 20em;transform: rotate(180deg);}
+            75% {background-color: aqua; left: 0; top: 20em;transform: rotate(270deg)}
+            100% {background-color: yellow;left: 0; top: 0;transform: rotate(360deg)}
+        }
+    </style>
+</head>
+<body>
+    <div id="kotak1"></div>
+</body>
+</html>

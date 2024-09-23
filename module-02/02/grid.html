@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            /* grid-template-rows: 50px 100px 50px; */
+            text-align: center;
+            
+        }
+
+        .content {
+            padding: 2em;
+            height: 2em;
+            background-color: aqua;
+        }
+
+        .content:nth-child(even) {
+            background-color: beige;
+        }
+
+        #container1 {
+            display: grid;
+            padding: 2em;
+            gap: 1em;
+        }
+
+        #content1 {
+            grid-row-start: 1;
+            grid-row-end: 3;
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        #contentImg1 {
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        #content2 {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 3;
+            grid-column-end: 5;
+            height: 5em;
+        }
+
+         #contentImg2 {
+            border-radius: 16px;
+            object-fit: cover;
+             height: 25em;
+        }
+
+        #content3 {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 3;
+            grid-column-end: 4;
+            height:2em;
+        }
+
+        #contentImg3 {
+            border-radius: 16px;
+            object-fit: cover;
+             height: 15em;
+        }
+
+        #container2 {
+            display: grid;
+        }
+
+        #konten1 {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+
+        #konten2 {
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">1</div>
+        <div class="content">2</div>
+        <div class="content">3</div>
+        <div class="content">4</div>
+        <div class="content">5</div>
+        <div class="content">6</div>
+        <div class="content">7</div>
+        <div class="content">8</div>
+        <div class="content">9</div>
+    </div>
+    <div id="container1">
+        <div id="content1">
+            <img id="contentImg1" src="https://img.lazcdn.com/g/p/5a934f6ce43f0338666f9a12a1615df4.jpg_720x720q80.jpg" />
+        </div>
+        <div id="content2">
+            <img id="contentImg2" src="https://img.lazcdn.com/g/p/5a934f6ce43f0338666f9a12a1615df4.jpg_720x720q80.jpg" />
+        </div>
+        <div id="content3">
+            <img id="contentImg3" src="https://img.lazcdn.com/g/p/5a934f6ce43f0338666f9a12a1615df4.jpg_720x720q80.jpg" />
+        </div>
+        <!-- <div id="content4"><img src="https://img.lazcdn.com/g/p/5a934f6ce43f0338666f9a12a1615df4.jpg_720x720q80.jpg" /></div> -->
+    </div>
+    <div id="container2">
+        <div class="content" id="konten1">1</div>
+        <div class="content" id="konten2">2</div>
+        <div class="content" id="konten3">3</div>
+        <div class="content" id="konten4">4</div>
+        <div class="content" id="konten5">5</div>
+        <div class="content" id="konten6">6</div>
+    </div>
+</body>
+</html>
