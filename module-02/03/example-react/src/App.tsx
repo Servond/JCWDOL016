@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import JumbotronSection from "./pages/jumbotronSection";
 import ContactUsSection from "./pages/contactUsSection";
 import TestimoniSection from "./pages/testimoniSection";
@@ -9,9 +10,13 @@ function App() {
       <div>Navbar</div>
       <div>
         <h2>First React</h2>
-        <JumbotronSection name={"Bryan"} />
-        <ContactUsSection />
-        <TestimoniSection />
+        <Routes>
+          <Route path="dashboard">
+            <Route path="" element={<JumbotronSection name="Bryan" />} />
+            <Route path="testimoni" element={<TestimoniSection />} />
+          </Route>
+          <Route path="contact-us" element={<ContactUsSection />} />
+        </Routes>
       </div>
       <div>Footer</div>
     </div>
