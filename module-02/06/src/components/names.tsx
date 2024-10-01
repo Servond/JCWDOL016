@@ -1,5 +1,6 @@
-import { useReducer, useContext } from "react";
+import { useReducer, useContext, useState, useCallback } from "react";
 import { AuthContext } from "../context/auth";
+import Todos from "./todos";
 
 interface IProps {
   name: string;
@@ -26,8 +27,13 @@ function reducer(state: ICountState, action: ICountAction) {
 }
 
 function Names(props: IProps) {
+  const [todos, setTodos] = useState<string[]>([]);
   const [state, dispatch] = useReducer(reducer, { count: 0 });
   const login = useContext(AuthContext);
+
+  const addTodo = useCallback(() => {
+    setTodos((t) => [...t, "New Todo"]);
+  }, []);
 
   return (
     <div>
@@ -46,6 +52,7 @@ function Names(props: IProps) {
         Decrement
       </button>
       {state.count}
+      <Todos todos={todos} addTodo={addTodo} />
     </div>
   );
 }
