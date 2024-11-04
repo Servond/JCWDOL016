@@ -28,3 +28,10 @@ model Manager {
   branchId Int    @unique
   branch   Branch @relation(fields: [branchId], references: [id])
 }
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  role     String @default("user")
+}

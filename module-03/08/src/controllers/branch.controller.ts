@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import { PrismaClient } from "@prisma/client";
-
 const prisma = new PrismaClient();
 
 async function CreateBranch(req: Request, res: Response, next: NextFunction) {
@@ -58,22 +57,24 @@ async function GetBranches(req: Request, res: Response, next: NextFunction) {
       pageSize: parseInt(pageSize as string) || 10,
     };
 
-    const data = await prisma.branch.findMany({
-      skip: filter.page != 1 ? (filter.page - 1) * filter.pageSize : 0,
-      take: filter.pageSize,
-      where: {
-        AND: [
-          {
-            name: {
-              not: null,
-            },
-          },
-          {
-            location: "online",
-          },
-        ],
-      },
-    });
+    const data = await prisma.branch.findMany();
+    //  const data = await prisma.branch.findMany({
+    //    skip: filter.page != 1 ? (filter.page - 1) * filter.pageSize : 0,
+    //    take: filter.pageSize,
+    //    where: {
+    //      AND: [
+    //        {
+    //          name: {
+    //            not: null,
+    //          },
+    //        },
+    //        {
+    //          location: "online",
+    //        },
+    //      ],
+    //    },
+    //  });
+    console.log(data);
 
     res.status(200).send({
       message: "Success",

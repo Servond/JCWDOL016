@@ -7,14 +7,15 @@ import {
   UpdateBranch,
   DeleteBranch,
 } from "../controllers/branch.controller";
+import { AdminGuard, VerifyToken } from "../middlewares/auth.middleware";
 
 const router = Router();
 
 // insert branch to database
-router.post("/branches", CreateBranch);
+router.post("/branches", VerifyToken, AdminGuard, CreateBranch);
 
 // find branch list in database
-router.get("/branches", GetBranches);
+router.get("/branches", VerifyToken, GetBranches);
 
 // find branch by id
 router.get("/branches/:id", GetBranch);
