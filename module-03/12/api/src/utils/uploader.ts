@@ -9,8 +9,6 @@ export const SingleUploader = (filePrefix: string, folderName?: string) => {
   const maxSize = 1 * 1024 * 1024;
   const defaultDir = join(__dirname, "../../public");
 
-  console.log(defaultDir);
-
   const storage = multer.diskStorage({
     destination: (
       req: Request,
@@ -26,7 +24,6 @@ export const SingleUploader = (filePrefix: string, folderName?: string) => {
       cb: FileNameCallback
     ) => {
       const originalNameParts = file.originalname.split(".");
-      console.log(originalNameParts);
       const fileExtension = originalNameParts[originalNameParts.length - 1];
       const newFileName = filePrefix + Date.now() + "." + fileExtension;
 

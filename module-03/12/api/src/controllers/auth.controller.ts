@@ -1,10 +1,14 @@
 import { Request, Response, NextFunction } from "express";
+import { transporter } from "../lib/mail";
 import { PrismaClient } from "@prisma/client";
 import { genSalt, hash, compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 
-import { SECRET_KEY } from "../utils/envConfig";
+import { SECRET_KEY, BASE_WEB_URL } from "../utils/envConfig";
 import { User } from "../custom";
+import path from "path";
+import handlebars, { template } from "handlebars";
+import fs from "fs";
 
 const prisma = new PrismaClient();
 
@@ -27,13 +31,41 @@ async function Register(req: Request, res: Response, next: NextFunction) {
     const salt = await genSalt(10);
     const hashPassword = await hash(password, salt);
 
-    await prisma.user.create({
-      data: {
+    const templatePath = path.join(
+      __dirname,
+      "../templates",
+      "register-mail.hbs"
+    );
+    const templateSource = fs.readFileSync(templatePath, "utf-8");
+    const compiledTemplate = handlebars.compile(templateSource);
+
+    await prisma.$transaction(async (prisma) => {
+      await prisma.user.create({
+        data: {
+          email,
+          name,
+          password: hashPassword,
+          roleId: findRoleUser.id,
+        },
+      });
+
+      const payload = {
         email,
+      };
+
+      const token = sign(payload, SECRET_KEY as string, { expiresIn: "1hr" });
+      const verificationUrl = BASE_WEB_URL + `/verify/${token}`;
+      const html = compiledTemplate({
+        emailUser: email,
         name,
-        password: hashPassword,
-        roleId: findRoleUser.id,
-      },
+        verificationUrl,
+      });
+
+      await transporter.sendMail({
+        to: email,
+        subject: "Registration",
+        html,
+      });
     });
 
     res.status(200).send({
@@ -56,7 +88,8 @@ async function Login(req: Request, res: Response, next: NextFunction) {
     });
 
     if (!findUser) throw new Error("Invalid email or password");
-
+    if (!findUser.isVerified)
+      throw new Error("Please verify your account first");
     const isValid = await compare(password, findUser.password);
 
     if (!isValid) throw new Error("Invalid email or password");
@@ -152,4 +185,23 @@ async function UpdateAvatar(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-export { Register, Login, GetUserLogin, GetUsers, UpdateAvatar };
+async function VerifyUser(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { email } = req.user as User;
+
+    await prisma.user.update({
+      where: { email },
+      data: {
+        isVerified: true,
+      },
+    });
+
+    res.status(200).send({
+      message: "Verify Success",
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export { Register, Login, GetUserLogin, GetUsers, VerifyUser, UpdateAvatar };

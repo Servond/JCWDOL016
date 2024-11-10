@@ -5,6 +5,7 @@ import {
   GetUserLogin,
   GetUsers,
   UpdateAvatar,
+  VerifyUser,
 } from "../controllers/auth.controller";
 import { VerifyToken, AdminGuard } from "../middlewares/auth.middleware";
 
@@ -25,8 +26,10 @@ router.post("/login", LoginValidation, Login);
 
 router.get("/users", VerifyToken, AdminGuard, GetUsers);
 
+router.get("/verify", VerifyToken, VerifyUser);
+
 // uploader
-router.post(
+router.patch(
   "/avatar",
   VerifyToken,
   SingleUploader("AVT", "/avatar"),
