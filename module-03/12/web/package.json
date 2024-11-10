@@ -1,0 +1,31 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "cookies-next": "^4.3.0",
+    "formik": "^2.4.6",
+    "jwt-decode": "^4.0.0",
+    "next": "15.0.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "sweetalert2": "^11.14.5",
+    "yup": "^1.4.0",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
