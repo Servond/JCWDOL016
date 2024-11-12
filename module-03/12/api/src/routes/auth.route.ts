@@ -16,24 +16,34 @@ import {
   LoginValidation,
 } from "../middlewares/validations/auth.validation";
 
-const router = Router();
+export class AuthRoute {
+  private router: Router = Router();
 
-router.post("/register", RegisterValidation, Register);
+  constructor() {
+    this.routes();
+  }
 
-router.post("/login", LoginValidation, Login);
+  private routes(): void {
+    this.router.post("/register", RegisterValidation, Register);
 
-// router.get("/me", VerifyToken, GetUserLogin);
+    this.router.post("/login", LoginValidation, Login);
 
-router.get("/users", VerifyToken, AdminGuard, GetUsers);
+    // router.get("/me", VerifyToken, GetUserLogin);
 
-router.get("/verify", VerifyToken, VerifyUser);
+    this.router.get("/users", VerifyToken, AdminGuard, GetUsers);
 
-// uploader
-router.patch(
-  "/avatar",
-  VerifyToken,
-  SingleUploader("AVT", "/avatar"),
-  UpdateAvatar
-);
+    this.router.get("/verify", VerifyToken, VerifyUser);
 
-export default router;
+    // uploader
+    this.router.patch(
+      "/avatar",
+      VerifyToken,
+      SingleUploader("AVT", "/avatar"),
+      UpdateAvatar
+    );
+  }
+
+  public getRoute(): Router {
+    return this.router;
+  }
+}

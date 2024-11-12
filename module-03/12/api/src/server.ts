@@ -4,24 +4,41 @@ import cors from "cors";
 
 import ErrorMiddleware from "./middlewares/error.middleware";
 
-import authRouter from "./routes/auth.route";
+import { AuthRoute } from "./routes/auth.route";
 
-const PORT = Number(port) || 8000;
+export default class Server {
+  private app: Application;
+  private PORT: number;
 
-const app: Application = express();
+  constructor() {
+    this.PORT = Number(port) || 8000;
+    this.app = express();
+    this.middleware();
+    this.routes();
+    this.handleError();
+  }
 
-app.use(
-  cors({
-    origin: BASE_WEB_URL || "http://localhost:3000",
-    credentials: true,
-  })
-);
-app.use(express.json());
+  private middleware(): void {
+    this.app.use(
+      cors({
+        origin: BASE_WEB_URL || "http://localhost:3000",
+        credentials: true,
+      })
+    );
+    this.app.use(express.json());
+  }
 
-app.use("/auth", authRouter);
+  private routes(): void {
+    this.app.use("/auth", new AuthRoute().getRoute());
+  }
 
-app.use(ErrorMiddleware);
+  private handleError(): void {
+    this.app.use(ErrorMiddleware);
+  }
 
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-});
+  public start(): void {
+    this.app.listen(this.PORT, () => {
+      console.log(`Server started on port ${this.PORT}`);
+    });
+  }
+}
