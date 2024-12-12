@@ -1,4 +1,4 @@
-import { Formik, Form, Field, FormikProps } from "formik";
+import { Formik, Form, FormikProps } from "formik";
 import IUser from "../../interfaces/user.interface";
 import axios from "axios";
 import Schema from "./schema";
@@ -44,11 +44,11 @@ function Register() {
               <Form>
                 <div>
                   <label htmlFor="firstName">First Name :</label>
-                  <Field
+                  <input
                     type="text"
                     name="firstName"
                     onChange={handleChange}
-                    values={values.firstName}
+                    value={values.firstName}
                   />
                   {touched.firstName && errors.firstName ? (
                     <div>{errors.firstName}</div>
@@ -56,11 +56,11 @@ function Register() {
                 </div>
                 <div>
                   <label htmlFor="lastName">Last Name :</label>
-                  <Field
+                  <input
                     type="text"
                     name="lastName"
                     onChange={handleChange}
-                    values={values.lastName}
+                    value={values.lastName}
                   />
                   {touched.lastName && errors.lastName ? (
                     <div>{errors.lastName}</div>
@@ -68,11 +68,11 @@ function Register() {
                 </div>
                 <div>
                   <label htmlFor="email">Email :</label>
-                  <Field
+                  <input
                     type="text"
                     name="email"
                     onChange={handleChange}
-                    values={values.email}
+                    value={values.email}
                   />
                   {touched.email && errors.email ? (
                     <div>{errors.email}</div>
@@ -80,11 +80,11 @@ function Register() {
                 </div>
                 <div>
                   <label htmlFor="password">Password :</label>
-                  <Field
+                  <input
                     type="password"
                     name="password"
                     onChange={handleChange}
-                    values={values.password}
+                    value={values.password}
                   />
                   {touched.password && errors.password ? (
                     <div>{errors.password}</div>

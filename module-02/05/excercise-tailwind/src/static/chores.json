@@ -1,0 +1,24 @@
+{
+    "task": [
+        {
+            "id": 1,
+            "name": "Create Guest Experience mobile check-in"
+        },
+        {
+            "id": 2,
+            "name": "Document current CI/CD process"
+        },
+        {
+            "id": 3,
+            "name": "Perform Code Reviewe for final Pillow-Talk release"
+        },
+        {
+            "id": 4,
+            "name": "Implement new Color Palette from Design Team"
+        },
+        {
+            "id": 5,
+            "name": "Fix Image uploading process for guest check-in"
+        }
+    ]
+}

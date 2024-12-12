@@ -7,7 +7,7 @@ interface IAuth {
 
 const AuthContext = createContext<IAuth | null>(null);
 
-function Auth({ children }: { children: JSX.Element }) {
+function Auth({ children }: { children: React.ReactNode }) {
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
   return (

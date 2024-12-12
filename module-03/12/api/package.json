@@ -2,7 +2,7 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.ts",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,7 @@
   "dependencies": {
     "@prisma/client": "^5.21.1",
     "@types/handlebars": "^4.1.0",
+    "@types/helmet": "^4.0.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",

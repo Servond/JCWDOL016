@@ -32,7 +32,7 @@ export class AuthRoute {
 
     this.router.get("/users", VerifyToken, AdminGuard, GetUsers);
 
-    this.router.get("/verify", VerifyToken, VerifyUser);
+    this.router.post("/verify", VerifyToken, VerifyUser);
 
     // uploader
     this.router.patch(

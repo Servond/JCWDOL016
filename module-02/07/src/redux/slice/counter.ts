@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface ICount {
-  value: number;
+  count: number;
+  isBoolean: boolean;
 }
 
 interface IPayload {
@@ -9,7 +10,7 @@ interface IPayload {
 }
 
 const initialState = {
-  value: 0,
+  count: 0,
 };
 
 const counterSlice = createSlice({
@@ -17,13 +18,13 @@ const counterSlice = createSlice({
   initialState,
   reducers: {
     increment: (state: ICount) => {
-      state.value += 1;
+      state.count += 1;
     },
     decrement: (state: ICount) => {
-      state.value -= 1;
+      state.count -= 1;
     },
     incrementByAmount: (state: ICount, action: IPayload) => {
-      state.value += action.payload;
+      state.count += action.payload;
     },
   },
 });

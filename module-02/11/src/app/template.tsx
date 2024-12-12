@@ -3,7 +3,7 @@ import { useState } from "react";
 import useCounterStore from "@/stores/counterStore";
 
 export default function Template({ children }: { children: React.ReactNode }) {
-  const { count, increment, decrement } = useCounterStore();
+  const { count, increment, decrement, incrementByAmount } = useCounterStore();
   return (
     <div className="bg-violet-200">
       <div>{count}</div>

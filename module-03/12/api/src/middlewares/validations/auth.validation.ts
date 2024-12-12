@@ -3,6 +3,7 @@ import { body, validationResult } from "express-validator";
 
 export const RegisterValidation = [
   body("email")
+    .trim()
     .notEmpty()
     .withMessage("Email is required")
     .isEmail()

@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import { PORT as port, BASE_WEB_URL } from "./utils/envConfig";
 import cors from "cors";
+import helmet from "helmet";
 
 import ErrorMiddleware from "./middlewares/error.middleware";
 
@@ -25,6 +26,7 @@ export default class Server {
         credentials: true,
       })
     );
+    this.app.use(helmet());
     this.app.use(express.json());
   }
 

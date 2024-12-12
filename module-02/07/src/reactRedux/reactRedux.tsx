@@ -10,7 +10,7 @@ import {
 function ReactRedux() {
   const [input, setInput] = useState<number>(0);
   const count = useSelector(
-    (state: { counter: ICount }) => state.counter.value
+    (state: { counter: ICount }) => state.counter.count
   );
   const dispatch = useDispatch();
   return (

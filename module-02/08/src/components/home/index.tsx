@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import IUser from "../../interfaces/user.interface";
+import { Link, useNavigate } from "react-router-dom";
 
 function Home() {
   const [users, setUsers] = useState<IUser[]>([]);
+  const navigate = useNavigate();
 
   const getUsers = async () => {
     try {
@@ -24,7 +26,9 @@ function Home() {
   return (
     <div>
       <h1>Home</h1>
+      <button onClick={() => navigate("/register")}>click</button>
       <div>
+        <Link to="/register">Register</Link>
         <table>
           <thead>
             <tr>

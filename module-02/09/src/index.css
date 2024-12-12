@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+  tr:nth-child(even) {
+    @apply bg-[#b2f5ea]
+  }
+}
